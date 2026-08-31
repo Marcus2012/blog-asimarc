@@ -2,16 +2,59 @@
 
 <section class="hero-section">
     <div class="hero-content">
-        <h1 class="hero-title">{{#if @site.title}}{{@site.title}}{{else}}Noticias de Conciliación & Arbitraje{{/if}}</h1>
-        <p class="hero-subtitle">{{#if @site.description}}{{@site.description}}{{else}}El portal especializado en actualización jurídica, mecanismos alternativos de resolución de conflictos y normativa.{{/if}}</p>
+        <div class="hero-breadcrumb">
+            <a href="{{@site.url}}">🏠 Inicio</a>
+            <span>&rsaquo;</span>
+            <span>Noticias & Conciliación</span>
+        </div>
+        <h1 class="hero-title">{{#if @site.title}}{{@site.title}}{{else}}Blog & Portal de Conciliación{{/if}}</h1>
+        <p class="hero-subtitle">
+            {{#if @site.description}}
+                {{@site.description}}
+            {{else}}
+                Un espacio académico e informativo donde encontrarás artículos de opinión, análisis normativos, guías y novedades sobre la conciliación y los mecanismos alternativos de resolución de conflictos.
+            {{/if}}
+        </p>
     </div>
 </section>
 
-<main class="main-container">
-    <div class="section-header">
-        <h2 class="section-title">Últimas Noticias & Publicaciones</h2>
-    </div>
+<!-- Caja de Búsqueda y Filtros Flotante inspirada en Ventana Jurídica PUCP -->
+<div class="filter-box-container">
+    <div class="filter-box">
+        <form data-ghost-search class="search-row">
+            <div class="search-input-wrapper">
+                <span class="search-icon">🔍</span>
+                <input type="text" class="search-input" placeholder="Ingresa tus términos de búsqueda..." />
+            </div>
+            <button type="submit" class="btn-search-submit">Buscar</button>
+        </form>
+        
+        <div class="filter-row">
+            <div class="filter-group">
+                <label for="cat-select">Categoría:</label>
+                <select id="cat-select" class="filter-select">
+                    <option value="">Todas</option>
+                    <option value="noticias">Noticias & Actualidad</option>
+                    <option value="normativa">Normativa & Decretos</option>
+                    <option value="jurisprudencia">Casos & Jurisprudencia</option>
+                    <option value="guias">Guías & Formatos</option>
+                </select>
+            </div>
 
+            <div class="filter-group">
+                <label for="date-from">Desde:</label>
+                <input type="date" id="date-from" class="filter-date" value="2020-01-01" />
+            </div>
+
+            <div class="filter-group">
+                <label for="date-to">Hasta:</label>
+                <input type="date" id="date-to" class="filter-date" value="2026-12-31" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<main class="main-container">
     <div class="posts-grid">
         {{#foreach posts}}
             <article class="post-card">
@@ -24,6 +67,8 @@
                 <div class="post-card-body">
                     {{#if primary_tag}}
                         <a href="{{primary_tag.url}}" class="post-tag">{{primary_tag.name}}</a>
+                    {{else}}
+                        <span class="post-tag">CONCILIACIÓN</span>
                     {{/if}}
 
                     <h3 class="post-card-title">
@@ -33,10 +78,7 @@
                     <p class="post-card-excerpt">{{excerpt words="25"}}...</p>
 
                     <div class="post-card-footer">
-                        {{#if primary_author.profile_image}}
-                            <img class="author-avatar" src="{{primary_author.profile_image}}" alt="{{primary_author.name}}">
-                        {{/if}}
-                        <span>{{primary_author.name}}</span> &bull; 
+                        <span>✍️ {{primary_author.name}}</span> &bull; 
                         <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMM YYYY"}}</time>
                     </div>
                 </div>
