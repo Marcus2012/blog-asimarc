@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{meta_title}}</title>
+    
+    <!-- Fonts Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Ghost Theme CSS -->
+    <link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}" />
+
+    {{ghost_head}}
+</head>
+<body class="{{body_class}}">
+
+    <header class="site-header">
+        <div class="header-container">
+            <a href="{{@site.url}}" class="site-logo">
+                {{#if @site.logo}}
+                    <img src="{{@site.logo}}" alt="{{@site.title}}" height="40">
+                {{else}}
+                    ⚖️ {{@site.title}}
+                {{/if}}
+            </a>
+            
+            <nav class="site-nav">
+                <ul class="nav-links">
+                    {{navigation}}
+                    {{#if @member}}
+                        <li><a href="#/portal/account">Mi Cuenta</a></li>
+                    {{else}}
+                        <li><a href="#/portal/signup" class="btn-primary">Suscribirse</a></li>
+                    {{/if}}
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    {{{body}}}
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <strong>{{@site.title}}</strong> &copy; {{date format="YYYY"}} &bull; Portal de Noticias y Actualidad en Conciliación.
+            </div>
+            <div class="footer-copyright">
+                Impulsado por <a href="https://ghost.org" target="_blank" style="color: #60a5fa; text-decoration: none;">Ghost CMS</a> &amp; Railway DB
+            </div>
+        </div>
+    </footer>
+
+    {{ghost_foot}}
+</body>
+</html>

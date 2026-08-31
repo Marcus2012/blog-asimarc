@@ -1,0 +1,17 @@
+# Node / Ghost
+node_modules/
+*.log
+content/data/
+content/images/
+content/files/
+content/themes/*/node_modules
+
+# Environment
+.env
+.env.local
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

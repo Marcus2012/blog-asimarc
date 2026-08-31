@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  ghost:
+    image: ghost:5-alpine
+    container_name: asimarc_ghost_blog
+    restart: always
+    ports:
+      - "2368:2368"
+    environment:
+      # URL pública del blog (Cambia por tu dominio final con https)
+      url: ${BLOG_URL:-http://localhost:2368}
+
+      # Configuración de base de datos MySQL en Railway
+      database__client: mysql
+      database__connection__host: ${RAILWAY_MYSQL_HOST}
+      database__connection__port: ${RAILWAY_MYSQL_PORT:-3306}
+      database__connection__user: ${RAILWAY_MYSQL_USER}
+      database__connection__password: ${RAILWAY_MYSQL_PASSWORD}
+      database__connection__database: ${RAILWAY_MYSQL_DATABASE}
+      database__connection__ssl__rejectUnauthorized: "false"
+
+      # Modo de producción
+      NODE_ENV: production
+    volumes:
+      - ./content:/var/lib/ghost/content
+
+networks:
+  default:
+    name: asimarc_network
