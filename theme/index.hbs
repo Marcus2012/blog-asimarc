@@ -1,90 +1,122 @@
 {{!< default}}
 
+<!-- Hero Section Institucional ASIMARC -->
 <section class="hero-section">
-    <div class="hero-content">
-        <div class="hero-breadcrumb">
-            <a href="{{@site.url}}">🏠 Inicio</a>
-            <span>&rsaquo;</span>
-            <span>Noticias & Conciliación</span>
+    <div class="hero-backdrop"></div>
+    <div class="hero-container">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="hero-badge-icon">⚖️</span>
+                <span>CENTRO DE CONCILIACIÓN & ARBITRAJE ASIMARC</span>
+            </div>
+            
+            <h1 class="hero-title">
+                {{#if @site.title}}
+                    {{@site.title}}
+                {{else}}
+                    Noticias, Normativa & Doctrina en Conciliación Extrajudicial
+                {{/if}}
+            </h1>
+            
+            <p class="hero-subtitle">
+                {{#if @site.description}}
+                    {{@site.description}}
+                {{else}}
+                    Espacio académico e informativo especializado en mecanismos alternativos de resolución de conflictos, análisis normativo, guías para conciliadores y precedentes de arbitraje.
+                {{/if}}
+            </p>
         </div>
-        <h1 class="hero-title">{{#if @site.title}}{{@site.title}}{{else}}Blog & Portal de Conciliación{{/if}}</h1>
-        <p class="hero-subtitle">
-            {{#if @site.description}}
-                {{@site.description}}
-            {{else}}
-                Un espacio académico e informativo donde encontrarás artículos de opinión, análisis normativos, guías y novedades sobre la conciliación y los mecanismos alternativos de resolución de conflictos.
-            {{/if}}
-        </p>
     </div>
 </section>
 
-<!-- Caja de Búsqueda y Filtros Flotante inspirada en Ventana Jurídica PUCP -->
-<div class="filter-box-container">
-    <div class="filter-box">
-        <form data-ghost-search class="search-row">
-            <div class="search-input-wrapper">
-                <span class="search-icon">🔍</span>
-                <input type="text" class="search-input" placeholder="Ingresa tus términos de búsqueda..." />
+<!-- Barra Flotante de Búsqueda y Categorías -->
+<div class="filter-box-wrapper">
+    <div class="filter-box-card">
+        <div class="search-bar-row">
+            <div class="search-input-box" data-ghost-search>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="search-input-icon">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" class="search-input-field" placeholder="Buscar artículos, decretos, guías o jurisprudencia..." readonly />
+                <span class="search-shortcut">⌘K</span>
             </div>
-            <button type="submit" class="btn-search-submit">Buscar</button>
-        </form>
-        
-        <div class="filter-row">
-            <div class="filter-group">
-                <label for="cat-select">Categoría:</label>
-                <select id="cat-select" class="filter-select">
-                    <option value="">Todas</option>
-                    <option value="noticias">Noticias & Actualidad</option>
-                    <option value="normativa">Normativa & Decretos</option>
-                    <option value="jurisprudencia">Casos & Jurisprudencia</option>
-                    <option value="guias">Guías & Formatos</option>
-                </select>
-            </div>
+        </div>
 
-            <div class="filter-group">
-                <label for="date-from">Desde:</label>
-                <input type="date" id="date-from" class="filter-date" value="2020-01-01" />
-            </div>
-
-            <div class="filter-group">
-                <label for="date-to">Hasta:</label>
-                <input type="date" id="date-to" class="filter-date" value="2026-12-31" />
+        <div class="category-pills-row">
+            <span class="pills-label">Categorías:</span>
+            <div class="pills-list">
+                <a href="{{@site.url}}" class="category-pill active">Todas</a>
+                <a href="{{@site.url}}/tag/noticias/" class="category-pill">📰 Noticias</a>
+                <a href="{{@site.url}}/tag/normativa/" class="category-pill">📜 Normativa</a>
+                <a href="{{@site.url}}/tag/jurisprudencia/" class="category-pill">⚖️ Jurisprudencia</a>
+                <a href="{{@site.url}}/tag/guias/" class="category-pill">🎓 Guías & Formatos</a>
             </div>
         </div>
     </div>
 </div>
 
-<main class="main-container">
-    <div class="posts-grid">
-        {{#foreach posts}}
-            <article class="post-card">
-                {{#if feature_image}}
-                    <a href="{{url}}">
-                        <img class="post-card-image" src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy">
-                    </a>
-                {{/if}}
-                
-                <div class="post-card-body">
-                    {{#if primary_tag}}
-                        <a href="{{primary_tag.url}}" class="post-tag">{{primary_tag.name}}</a>
-                    {{else}}
-                        <span class="post-tag">CONCILIACIÓN</span>
-                    {{/if}}
-
-                    <h3 class="post-card-title">
-                        <a href="{{url}}">{{title}}</a>
-                    </h3>
-
-                    <p class="post-card-excerpt">{{excerpt words="25"}}...</p>
-
-                    <div class="post-card-footer">
-                        <span>✍️ {{primary_author.name}}</span> &bull; 
-                        <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMM YYYY"}}</time>
+<!-- Contenedor Principal de Contenido -->
+<div class="content-container">
+    {{#if posts}}
+        <!-- Post Destacado (si existe) en la primera página -->
+        {{#is "home"}}
+            {{#foreach posts limit="1" filter="featured:true"}}
+                <section class="featured-post-section">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <span class="star-icon">⭐</span> Articulo Destacado
+                        </h2>
                     </div>
-                </div>
-            </article>
-        {{/foreach}}
-    </div>
+                    <article class="featured-card-hero">
+                        {{#if feature_image}}
+                            <a href="{{url}}" class="featured-image-wrapper">
+                                <img src="{{img_url feature_image size="xl"}}" alt="{{title}}" loading="eager" />
+                            </a>
+                        {{/if}}
+                        <div class="featured-card-body">
+                            {{#if primary_tag}}
+                                <a href="{{primary_tag.url}}" class="post-badge badge-featured">{{primary_tag.name}}</a>
+                            {{/if}}
+                            <h2 class="featured-title">
+                                <a href="{{url}}">{{title}}</a>
+                            </h2>
+                            <p class="featured-excerpt">{{excerpt words="35"}}...</p>
+                            <div class="featured-footer">
+                                <div class="author-info">
+                                    {{#if primary_author.profile_image}}
+                                        <img src="{{primary_author.profile_image}}" class="author-avatar" alt="{{primary_author.name}}" />
+                                    {{/if}}
+                                    <span><strong>{{primary_author.name}}</strong> &bull; {{date format="DD [de] MMMM, YYYY"}}</span>
+                                </div>
+                                <a href="{{url}}" class="btn-read-more">Leer artículo completo &rarr;</a>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+            {{/foreach}}
+        {{/is}}
 
-    {{pagination}}
-</main>
+        <!-- Grilla de Artículos Recientes -->
+        <section class="posts-section">
+            <div class="section-header">
+                <h2 class="section-title">Publicaciones Recientes</h2>
+                <span class="section-subtitle">Explora los últimos análisis y noticias del centro</span>
+            </div>
+
+            <div class="posts-grid">
+                {{#foreach posts}}
+                    {{> "post-card"}}
+                {{/foreach}}
+            </div>
+
+            {{pagination}}
+        </section>
+    {{else}}
+        <div class="empty-state">
+            <div class="empty-icon">📁</div>
+            <h3>No se encontraron publicaciones aún</h3>
+            <p>Pronto publicaremos nuevos artículos sobre conciliación y arbitraje. ¡Vuelve a visitarnos pronto!</p>
+        </div>
+    {{/if}}
+</div>

@@ -1,0 +1,25 @@
+<nav class="pagination-container" aria-label="Navegación de páginas">
+    {{#if prev}}
+        <a class="pagination-btn pagination-prev" href="{{page_url prev}}">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>Anterior</span>
+        </a>
+    {{/if}}
+
+    <span class="pagination-number">
+        Página <strong>{{page}}</strong> de <strong>{{pages}}</strong>
+    </span>
+
+    {{#if next}}
+        <a class="pagination-btn pagination-next" href="{{page_url next}}">
+            <span>Siguiente</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+        </a>
+    {{/if}}
+</nav>

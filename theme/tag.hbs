@@ -1,41 +1,41 @@
 {{!< default}}
 
 {{#tag}}
-<section class="hero-section">
-    <div class="hero-content">
-        <span class="post-tag" style="background: rgba(255,255,255,0.2); color: white;">Categoría</span>
-        <h1 class="hero-title">{{name}}</h1>
+<header class="tag-header-section">
+    <div class="tag-header-container">
+        <div class="hero-breadcrumbs">
+            <a href="{{@site.url}}">🏠 Inicio</a>
+            <span>&rsaquo;</span>
+            <span>Etiqueta</span>
+        </div>
+        
+        <h1 class="tag-title">
+            <span class="tag-icon">🏷️</span> {{name}}
+        </h1>
+        
         {{#if description}}
-            <p class="hero-subtitle">{{description}}</p>
+            <p class="tag-description">{{description}}</p>
+        {{else}}
+            <p class="tag-description">
+                Artículos, análisis y publicaciones clasificadas bajo la categoría de <strong>{{name}}</strong> en el portal de ASIMARC.
+            </p>
         {{/if}}
+        
+        <div class="tag-count">
+            {{plural ../pagination.total empty='Sin publicaciones' singular='% artículo encontrado' plural='% artículos encontrados'}}
+        </div>
     </div>
-</section>
+</header>
 {{/tag}}
 
-<main class="main-container">
-    <div class="posts-grid">
-        {{#foreach posts}}
-            <article class="post-card">
-                {{#if feature_image}}
-                    <a href="{{url}}">
-                        <img class="post-card-image" src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy">
-                    </a>
-                {{/if}}
-                
-                <div class="post-card-body">
-                    <h3 class="post-card-title">
-                        <a href="{{url}}">{{title}}</a>
-                    </h3>
+<div class="content-container">
+    <section class="posts-section">
+        <div class="posts-grid">
+            {{#foreach posts}}
+                {{> "post-card"}}
+            {{/foreach}}
+        </div>
 
-                    <p class="post-card-excerpt">{{excerpt words="25"}}...</p>
-
-                    <div class="post-card-footer">
-                        <span><time datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMM YYYY"}}</time></span>
-                    </div>
-                </div>
-            </article>
-        {{/foreach}}
-    </div>
-
-    {{pagination}}
-</main>
+        {{pagination}}
+    </section>
+</div>

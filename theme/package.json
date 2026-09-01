@@ -1,13 +1,13 @@
 {
-  "name": "conciliacion-news-theme",
-  "description": "Tema personalizado para Portal y Blog de Noticias de Conciliación y Arbitraje",
-  "version": "1.0.0",
+  "name": "asimarc-theme",
+  "description": "Tema personalizado premium para el Blog y Portal de Conciliación y Arbitraje de ASIMARC",
+  "version": "2.0.0",
   "engines": {
     "ghost": ">=5.0.0"
   },
   "license": "MIT",
   "scripts": {
-    "zip": "zip -r conciliacion-theme.zip . -x '*.git*'"
+    "zip": "powershell Compress-Archive -Path * -DestinationPath ../conciliacion-theme.zip -Force"
   },
   "config": {
     "posts_per_page": 9,

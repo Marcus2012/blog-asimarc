@@ -1,0 +1,53 @@
+<header class="site-header" id="site-header">
+    <div class="header-container">
+        <a href="{{@site.url}}" class="site-logo">
+            {{#if @site.logo}}
+                <img src="{{@site.logo}}" alt="{{@site.title}}" />
+            {{else}}
+                <div class="brand-badge">
+                    <span class="brand-icon">⚖️</span>
+                    <div class="brand-text">
+                        <span class="brand-title">ASIMARC</span>
+                        <span class="brand-subtitle">CONCILIACIÓN & ARBITRAJE</span>
+                    </div>
+                </div>
+            {{/if}}
+        </a>
+
+        <nav class="site-nav" id="site-nav">
+            <ul class="nav-links">
+                {{navigation}}
+            </ul>
+        </nav>
+
+        <div class="header-actions">
+            <button class="btn-search-trigger" data-ghost-search title="Buscar en el portal">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <span class="search-text">Buscar</span>
+            </button>
+
+            {{#if @member}}
+                <a href="#/portal/account" class="btn-account">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <span>Mi Cuenta</span>
+                </a>
+            {{else}}
+                <a href="#/portal/signup" class="btn-subscribe">
+                    <span>Suscribirse</span>
+                </a>
+            {{/if}}
+
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </div>
+</header>

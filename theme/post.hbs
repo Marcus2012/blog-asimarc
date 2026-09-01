@@ -1,30 +1,117 @@
 {{!< default}}
 
 {{#post}}
-<main class="main-container">
-    <article class="single-article">
-        <header class="article-header">
-            {{#if primary_tag}}
-                <a href="{{primary_tag.url}}" class="post-tag">{{primary_tag.name}}</a>
-            {{/if}}
-            <h1 class="article-title">{{title}}</h1>
-            <div class="post-card-footer" style="justify-content: center; margin-top: 1rem;">
-                {{#if primary_author.profile_image}}
-                    <img class="author-avatar" src="{{primary_author.profile_image}}" alt="{{primary_author.name}}">
+<article class="single-post-article {{post_class}}">
+    <!-- Header del Artículo -->
+    <header class="single-post-header">
+        <div class="post-header-container">
+            <nav class="post-breadcrumbs" aria-label="Navegación secundaria">
+                <a href="{{@site.url}}">🏠 Inicio</a>
+                <span>&rsaquo;</span>
+                {{#if primary_tag}}
+                    <a href="{{primary_tag.url}}">{{primary_tag.name}}</a>
+                    <span>&rsaquo;</span>
                 {{/if}}
-                <span>Por <strong>{{primary_author.name}}</strong></span> &bull;
-                <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD [de] MMMM, YYYY"}}</time> &bull;
-                <span>{{reading_time minute="1 min de lectura" minutes="% min de lectura"}}</span>
+                <span class="breadcrumb-current">{{title}}</span>
+            </nav>
+
+            {{#if primary_tag}}
+                <a href="{{primary_tag.url}}" class="post-badge badge-{{primary_tag.slug}}">
+                    {{primary_tag.name}}
+                </a>
+            {{/if}}
+
+            <h1 class="single-post-title">{{title}}</h1>
+
+            {{#if custom_excerpt}}
+                <p class="single-post-excerpt">{{custom_excerpt}}</p>
+            {{/if}}
+
+            <div class="single-post-meta">
+                <div class="meta-author">
+                    {{#if primary_author.profile_image}}
+                        <img class="author-avatar-lg" src="{{primary_author.profile_image}}" alt="{{primary_author.name}}" />
+                    {{else}}
+                        <div class="author-avatar-fallback-lg">✍️</div>
+                    {{/if}}
+                    <div class="author-details">
+                        <span class="author-name-text">{{primary_author.name}}</span>
+                        <span class="post-date-text">Publicado el {{date format="DD [de] MMMM, YYYY"}}</span>
+                    </div>
+                </div>
+
+                <div class="meta-info">
+                    <span class="meta-item">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        {{reading_time minute="1 min de lectura" minutes="% min de lectura"}}
+                    </span>
+                </div>
             </div>
-        </header>
+        </div>
+    </header>
 
-        {{#if feature_image}}
-            <img class="article-feature-image" src="{{img_url feature_image size="xl"}}" alt="{{title}}">
-        {{/if}}
+    <!-- Imagen Principal -->
+    {{#if feature_image}}
+        <div class="single-post-image-container">
+            <figure class="post-feature-figure">
+                <img class="post-feature-image" src="{{img_url feature_image size="xl"}}" alt="{{title}}" />
+                {{#if feature_image_caption}}
+                    <figcaption class="post-image-caption">{{feature_image_caption}}</figcaption>
+                {{/if}}
+            </figure>
+        </div>
+    {{/if}}
 
-        <div class="article-content">
+    <!-- Cuerpo del Artículo -->
+    <div class="single-post-content-wrapper">
+        <div class="post-content gh-content">
             {{content}}
         </div>
-    </article>
-</main>
+
+        <!-- Tags y Compartir -->
+        <footer class="single-post-footer">
+            {{#if tags}}
+                <div class="post-tags-list">
+                    <span class="tags-label">Etiquetas:</span>
+                    {{#foreach tags}}
+                        <a href="{{url}}" class="post-tag-item">#{{name}}</a>
+                    {{#unless @last}} {{/unless}}
+                    {{/foreach}}
+                </div>
+            {{/if}}
+
+            <!-- Suscripción CTA -->
+            <div class="post-subscribe-card">
+                <div class="subscribe-card-content">
+                    <h3>🏛️ Recibe análisis normativos de ASIMARC en tu correo</h3>
+                    <p>Suscríbete gratis a nuestro boletín para no perderte actualizaciones sobre conciliación y arbitraje en el Perú.</p>
+                    <a href="#/portal/signup" class="btn-subscribe-cta">Suscribirse Gratis</a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Navegación entre Artículos -->
+        <nav class="post-navigation">
+            <div class="nav-post-item nav-prev">
+                {{#prev_post}}
+                    <a href="{{url}}">
+                        <span class="nav-label">&larr; Artículo Anterior</span>
+                        <strong class="nav-title">{{title}}</strong>
+                    </a>
+                {{/prev_post}}
+            </div>
+            <div class="nav-post-item nav-next">
+                {{#next_post}}
+                    <a href="{{url}}">
+                        <span class="nav-label">Artículo Siguiente &rarr;</span>
+                        <strong class="nav-title">{{title}}</strong>
+                    </a>
+                {{/next_post}}
+            </div>
+        </nav>
+    </div>
+</article>
 {{/post}}

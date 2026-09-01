@@ -1,0 +1,26 @@
+{{!< default}}
+
+{{#page}}
+<article class="single-page-article {{page_class}}">
+    <header class="single-page-header">
+        <div class="page-header-container">
+            <h1 class="single-page-title">{{title}}</h1>
+            {{#if custom_excerpt}}
+                <p class="single-page-excerpt">{{custom_excerpt}}</p>
+            {{/if}}
+        </div>
+    </header>
+
+    {{#if feature_image}}
+        <div class="single-page-image-container">
+            <img class="page-feature-image" src="{{img_url feature_image size="xl"}}" alt="{{title}}" />
+        </div>
+    {{/if}}
+
+    <div class="single-page-content-wrapper">
+        <div class="page-content gh-content">
+            {{content}}
+        </div>
+    </div>
+</article>
+{{/page}}
