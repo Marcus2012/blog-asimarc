@@ -1183,8 +1183,8 @@ img {
 
 .footer-top .footer-container {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
-  gap: 2.5rem;
+  grid-template-columns: 1.6fr 1fr 1.3fr;
+  gap: 3rem;
 }
 
 .footer-logo {
@@ -1280,14 +1280,27 @@ img {
 
 .footer-info-item {
   font-size: 0.88rem;
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.75rem;
   color: rgba(255, 255, 255, 0.75);
+  line-height: 1.5;
+}
+
+.footer-mail-link {
+  color: var(--color-gold-accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.footer-mail-link:hover {
+  color: var(--text-white);
+  text-decoration: underline;
 }
 
 .footer-bottom {
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.35);
   padding: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   font-size: 0.85rem;
 }
 
@@ -1299,9 +1312,14 @@ img {
   gap: 1rem;
 }
 
-.powered-by a {
-  color: var(--text-white);
-  font-weight: 600;
+.powered-by {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.85rem;
+}
+
+.powered-by strong {
+  color: var(--color-gold-accent);
+  font-weight: 700;
 }
 
 /* ==========================================================================
