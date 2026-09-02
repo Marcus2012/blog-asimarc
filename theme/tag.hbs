@@ -30,12 +30,22 @@
 
 <div class="content-container">
     <section class="posts-section">
-        <div class="posts-grid">
-            {{#foreach posts}}
-                {{> "post-card"}}
-            {{/foreach}}
-        </div>
-
-        {{pagination}}
+        {{#if posts}}
+            <div class="posts-grid">
+                {{#foreach posts}}
+                    {{> "post-card"}}
+                {{/foreach}}
+            </div>
+            {{pagination}}
+        {{else}}
+            <div class="empty-category-card">
+                <span class="empty-icon">📁</span>
+                <h3 class="empty-title">Próximamente artículos en {{#tag}}{{name}}{{/tag}}</h3>
+                <p class="empty-desc">
+                    Aún no se han publicado artículos en esta sección. Muy pronto nuestro equipo publicará novedades, doctrina y análisis especializados.
+                </p>
+                <a href="{{@site.url}}" class="btn-empty-home">&larr; Volver a la portada</a>
+            </div>
+        {{/if}}
     </section>
 </div>
