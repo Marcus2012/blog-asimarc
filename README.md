@@ -22,6 +22,7 @@ En tu servicio de Ghost en Railway, ve a la pestaña **Variables** y configura:
 PORT=2368
 url=https://${{RAILWAY_PUBLIC_DOMAIN}}
 NODE_ENV=production
+security__staffDeviceVerification=false
 
 database__client=mysql
 database__connection__host=${{MySQL.MYSQLHOST}}
