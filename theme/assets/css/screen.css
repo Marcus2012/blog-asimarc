@@ -123,23 +123,21 @@ img {
 .site-logo {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.85rem;
 }
 
-.site-logo img {
-  height: 42px;
-  width: auto;
+.header-brand-logo {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+  border: 2px solid rgba(212, 175, 55, 0.4);
+  transition: transform var(--transition-fast);
 }
 
-.brand-badge {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-}
-
-.brand-icon {
-  font-size: 1.6rem;
-  line-height: 1;
+.site-logo:hover .header-brand-logo {
+  transform: scale(1.05);
 }
 
 .brand-text {
@@ -149,19 +147,19 @@ img {
 
 .brand-title {
   font-family: var(--font-heading);
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 800;
   color: var(--text-white);
-  letter-spacing: -0.5px;
-  line-height: 1;
+  letter-spacing: -0.3px;
+  line-height: 1.05;
 }
 
 .brand-subtitle {
   font-size: 0.65rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-gold-accent);
   letter-spacing: 1.5px;
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
 /* Navigation Links */
@@ -326,6 +324,13 @@ img {
   font-weight: 700;
   letter-spacing: 0.8px;
   margin-bottom: 1.5rem;
+}
+
+.hero-badge-logo {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .hero-title {
@@ -647,10 +652,11 @@ img {
   color: var(--color-cobalt);
 }
 
-.badge-noticias { background: rgba(59, 130, 246, 0.12); color: #2563eb; }
-.badge-normativa { background: rgba(234, 179, 8, 0.15); color: #b45309; }
-.badge-jurisprudencia { background: rgba(16, 185, 129, 0.12); color: #059669; }
-.badge-guias { background: rgba(139, 92, 246, 0.12); color: #7c3aed; }
+.badge-noticias, .badge-negociacion { background: rgba(59, 130, 246, 0.15); color: #1d4ed8; }
+.badge-normativa, .badge-conciliacion { background: rgba(16, 185, 129, 0.15); color: #047857; }
+.badge-jurisprudencia, .badge-arbitraje { background: rgba(212, 175, 55, 0.18); color: #92400e; }
+.badge-jprd { background: rgba(239, 68, 68, 0.15); color: #b91c1c; }
+.badge-guias, .badge-capacitacion { background: rgba(139, 92, 246, 0.15); color: #6d28d9; }
 .badge-featured { background: var(--color-gold-accent); color: var(--color-navy-dark); }
 
 .reading-time {
@@ -1132,16 +1138,39 @@ img {
 .footer-logo {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 1rem;
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
 }
 
-.footer-icon { font-size: 1.8rem; }
+.footer-brand-logo {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(212, 175, 55, 0.4);
+}
+
+.footer-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
 .footer-title {
   font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 800;
   color: var(--text-white);
+  line-height: 1.1;
+}
+
+.footer-subtitle {
+  font-size: 0.68rem;
+  color: var(--color-gold-accent);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 2px;
 }
 
 .footer-desc {

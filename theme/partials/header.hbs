@@ -2,16 +2,14 @@
     <div class="header-container">
         <a href="{{@site.url}}" class="site-logo">
             {{#if @site.logo}}
-                <img src="{{@site.logo}}" alt="{{@site.title}}" />
+                <img src="{{@site.logo}}" alt="{{@site.title}}" class="header-brand-logo" />
             {{else}}
-                <div class="brand-badge">
-                    <span class="brand-icon">⚖️</span>
-                    <div class="brand-text">
-                        <span class="brand-title">ASIMARC</span>
-                        <span class="brand-subtitle">CONCILIACIÓN & ARBITRAJE</span>
-                    </div>
-                </div>
+                <img src="{{asset "images/logo.jpg"}}" alt="ASIMARC & DERECHO" class="header-brand-logo" />
             {{/if}}
+            <div class="brand-text">
+                <span class="brand-title">ASIMARC & DERECHO</span>
+                <span class="brand-subtitle">CENTRO DE CAPACITACIÓN</span>
+            </div>
         </a>
 
         <nav class="site-nav" id="site-nav">

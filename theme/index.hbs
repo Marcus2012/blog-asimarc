@@ -6,15 +6,15 @@
     <div class="hero-container">
         <div class="hero-content">
             <div class="hero-badge">
-                <span class="hero-badge-icon">⚖️</span>
-                <span>CENTRO DE CONCILIACIÓN & ARBITRAJE ASIMARC</span>
+                <img src="{{asset "images/logo.jpg"}}" alt="ASIMARC & DERECHO" class="hero-badge-logo" />
+                <span>CENTRO DE CAPACITACIÓN EN NEGOCIACIÓN, CONCILIACIÓN, ARBITRAJE Y JPRD</span>
             </div>
             
             <h1 class="hero-title">
                 {{#if @site.title}}
                     {{@site.title}}
                 {{else}}
-                    Noticias, Normativa & Doctrina en Conciliación Extrajudicial
+                    ASIMARC & DERECHO
                 {{/if}}
             </h1>
             
@@ -22,7 +22,7 @@
                 {{#if @site.description}}
                     {{@site.description}}
                 {{else}}
-                    Espacio académico e informativo especializado en mecanismos alternativos de resolución de conflictos, análisis normativo, guías para conciliadores y precedentes de arbitraje.
+                    Centro de formación, especialización e información jurídica en Negociación, Conciliación Extrajudicial, Arbitraje y Junta de Prevención y Resolución de Disputas (JPRD).
                 {{/if}}
             </p>
         </div>
@@ -38,7 +38,7 @@
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
-                <input type="text" class="search-input-field" placeholder="Buscar artículos, decretos, guías o jurisprudencia..." readonly />
+                <input type="text" class="search-input-field" placeholder="Buscar en Negociación, Conciliación, Arbitraje o JPRD..." readonly />
                 <span class="search-shortcut">⌘K</span>
             </div>
         </div>
@@ -47,10 +47,11 @@
             <span class="pills-label">Categorías:</span>
             <div class="pills-list">
                 <a href="{{@site.url}}" class="category-pill active">Todas</a>
-                <a href="{{@site.url}}/tag/noticias/" class="category-pill">📰 Noticias</a>
-                <a href="{{@site.url}}/tag/normativa/" class="category-pill">📜 Normativa</a>
-                <a href="{{@site.url}}/tag/jurisprudencia/" class="category-pill">⚖️ Jurisprudencia</a>
-                <a href="{{@site.url}}/tag/guias/" class="category-pill">🎓 Guías & Formatos</a>
+                <a href="{{@site.url}}/tag/negociacion/" class="category-pill">🤝 Negociación</a>
+                <a href="{{@site.url}}/tag/conciliacion/" class="category-pill">⚖️ Conciliación</a>
+                <a href="{{@site.url}}/tag/arbitraje/" class="category-pill">📜 Arbitraje</a>
+                <a href="{{@site.url}}/tag/jprd/" class="category-pill">🏗️ JPRD</a>
+                <a href="{{@site.url}}/tag/capacitacion/" class="category-pill">🎓 Centro de Capacitación</a>
             </div>
         </div>
     </div>
