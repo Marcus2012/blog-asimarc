@@ -7,9 +7,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const siteNav = document.getElementById('site-nav');
 
     if (mobileMenuBtn && siteNav) {
-        mobileMenuBtn.addEventListener('click', () => {
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             mobileMenuBtn.classList.toggle('active');
             siteNav.classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer click afuera (Click outside / tap outside)
+        document.addEventListener('click', (e) => {
+            if (!siteNav.contains(e.target) && !mobileMenuBtn.contains(e.target) && siteNav.classList.contains('active')) {
+                mobileMenuBtn.classList.remove('active');
+                siteNav.classList.remove('active');
+            }
+        });
+
+        // Cerrar menú al navegar por un enlace
+        siteNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                siteNav.classList.remove('active');
+            });
         });
     }
 

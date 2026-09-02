@@ -16,6 +16,11 @@
             <ul class="nav-links">
                 {{navigation}}
             </ul>
+            {{#unless @member}}
+                <div class="mobile-nav-cta">
+                    <a href="#/portal/signup" class="mobile-subscribe-btn">Suscribirse al Portal</a>
+                </div>
+            {{/unless}}
         </nav>
 
         <div class="header-actions">
