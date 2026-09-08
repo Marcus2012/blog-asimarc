@@ -1,101 +1,103 @@
-{{!< default}}
+{{!< default}} <!-- Hero Section Institucional ASIMARC -->
+    <section class="hero-section">
+        <div class="hero-backdrop"></div>
+        <div class="hero-container">
+            <div class="hero-content">
 
-<!-- Hero Section Institucional ASIMARC -->
-<section class="hero-section">
-    <div class="hero-backdrop"></div>
-    <div class="hero-container">
-        <div class="hero-content">
-            <div class="hero-badge">
-                <img src="{{asset "images/logo.jpg"}}" alt="ASIMARC & DERECHO" class="hero-badge-logo" />
-                <span>CENTRO DE CAPACITACIÓN EN NEGOCIACIÓN, CONCILIACIÓN, ARBITRAJE Y JPRD</span>
-            </div>
-            
-            <h1 class="hero-title">
-                {{#if @site.title}}
+
+                <h1 class="hero-title">
+                    {{#if @site.title}}
                     {{@site.title}}
-                {{else}}
+                    {{else}}
                     ASIMARC & DERECHO
-                {{/if}}
-            </h1>
-            
-            <p class="hero-subtitle">
-                {{#if @site.description}}
+                    {{/if}}
+                </h1>
+
+                <p class="hero-subtitle">
+                    {{#if @site.description}}
                     {{@site.description}}
-                {{else}}
-                    Centro de formación, especialización e información jurídica en Negociación, Conciliación Extrajudicial, Arbitraje y Junta de Prevención y Resolución de Disputas (JPRD).
-                {{/if}}
-            </p>
-        </div>
-    </div>
-</section>
-
-<!-- Barra Flotante de Búsqueda y Categorías -->
-<div class="filter-box-wrapper">
-    <div class="filter-box-card">
-        <div class="search-bar-row">
-            <div class="search-input-box" data-ghost-search>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="search-input-icon">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-                <input type="text" class="search-input-field" placeholder="Buscar en Negociación, Conciliación, Arbitraje o JPRD..." readonly />
-                <span class="search-shortcut">⌘K</span>
+                    {{else}}
+                    Centro de formación, especialización e información jurídica en Negociación, Conciliación
+                    Extrajudicial, Arbitraje y Junta de Prevención y Resolución de Disputas (JPRD).
+                    {{/if}}
+                </p>
             </div>
         </div>
+    </section>
 
-        <div class="category-pills-row">
-            <span class="pills-label">Categorías:</span>
-            <div class="pills-list">
-                <a href="{{@site.url}}" class="category-pill active">Todas</a>
-                <a href="{{@site.url}}/tag/negociacion/" class="category-pill">🤝 Negociación</a>
-                <a href="{{@site.url}}/tag/conciliacion/" class="category-pill">⚖️ Conciliación</a>
-                <a href="{{@site.url}}/tag/arbitraje/" class="category-pill">📜 Arbitraje</a>
-                <a href="{{@site.url}}/tag/jprd/" class="category-pill">🏗️ JPRD</a>
-                <a href="{{@site.url}}/tag/capacitacion/" class="category-pill">🎓 Centro de Capacitación</a>
+    <!-- Barra Flotante de Búsqueda y Categorías -->
+    <div class="filter-box-wrapper">
+        <div class="filter-box-card">
+            <div class="search-bar-row">
+                <div class="search-input-box" data-ghost-search>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                        class="search-input-icon">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" class="search-input-field"
+                        placeholder="Buscar en Negociación, Conciliación, Arbitraje, JPRD y Contrataciones..."
+                        readonly />
+                    <span class="search-shortcut">⌘K</span>
+                </div>
+            </div>
+
+            <div class="category-pills-row">
+                <span class="pills-label">Categorías:</span>
+                <div class="pills-list">
+                    <a href="{{@site.url}}" class="category-pill active">Todas</a>
+                    <a href="{{@site.url}}/tag/negociacion/" class="category-pill">🤝 Negociación</a>
+                    <a href="{{@site.url}}/tag/conciliacion/" class="category-pill">⚖️ Conciliación</a>
+                    <a href="{{@site.url}}/tag/arbitraje/" class="category-pill">📜 Arbitraje</a>
+                    <a href="{{@site.url}}/tag/jprd/" class="category-pill">🏗️ JPRD</a>
+                    <a href="{{@site.url}}/tag/contrataciones/" class="category-pill">📝 Contrataciones</a>
+                    <a href="{{@site.url}}/tag/capacitacion/" class="category-pill">🎓 Centro de Capacitación</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Contenedor Principal de Contenido -->
-<div class="content-container">
-    {{#if posts}}
+    <!-- Contenedor Principal de Contenido -->
+    <div class="content-container">
+        {{#if posts}}
         <!-- Post Destacado (si existe) en la primera página -->
         {{#is "home"}}
-            {{#foreach posts limit="1" filter="featured:true"}}
-                <section class="featured-post-section">
-                    <div class="section-header">
-                        <h2 class="section-title">
-                            <span class="star-icon">⭐</span> Articulo Destacado
-                        </h2>
-                    </div>
-                    <article class="featured-card-hero">
-                        {{#if feature_image}}
-                            <a href="{{url}}" class="featured-image-wrapper">
-                                <img src="{{img_url feature_image size="xl"}}" alt="{{title}}" loading="eager" />
-                            </a>
-                        {{/if}}
-                        <div class="featured-card-body">
-                            {{#if primary_tag}}
-                                <a href="{{primary_tag.url}}" class="post-badge badge-featured">{{primary_tag.name}}</a>
+        {{#foreach posts limit="1" filter="featured:true"}}
+        <section class="featured-post-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="star-icon">⭐</span> Articulo Destacado
+                </h2>
+            </div>
+            <article class="featured-card-hero">
+                {{#if feature_image}}
+                <a href="{{url}}" class="featured-image-wrapper">
+                    <img src="{{img_url feature_image size=" xl"}}" alt="{{title}}" loading="eager" />
+                </a>
+                {{/if}}
+                <div class="featured-card-body">
+                    {{#if primary_tag}}
+                    <a href="{{primary_tag.url}}" class="post-badge badge-featured">{{primary_tag.name}}</a>
+                    {{/if}}
+                    <h2 class="featured-title">
+                        <a href="{{url}}">{{title}}</a>
+                    </h2>
+                    <p class="featured-excerpt">{{excerpt words="35"}}...</p>
+                    <div class="featured-footer">
+                        <div class="author-info">
+                            {{#if primary_author.profile_image}}
+                            <img src="{{primary_author.profile_image}}" class="author-avatar"
+                                alt="{{primary_author.name}}" />
                             {{/if}}
-                            <h2 class="featured-title">
-                                <a href="{{url}}">{{title}}</a>
-                            </h2>
-                            <p class="featured-excerpt">{{excerpt words="35"}}...</p>
-                            <div class="featured-footer">
-                                <div class="author-info">
-                                    {{#if primary_author.profile_image}}
-                                        <img src="{{primary_author.profile_image}}" class="author-avatar" alt="{{primary_author.name}}" />
-                                    {{/if}}
-                                    <span><strong>{{primary_author.name}}</strong> &bull; {{date format="DD [de] MMMM, YYYY"}}</span>
-                                </div>
-                                <a href="{{url}}" class="btn-read-more">Leer artículo completo &rarr;</a>
-                            </div>
+                            <span><strong>{{primary_author.name}}</strong> &bull; {{date format="DD [de] MMMM,
+                                YYYY"}}</span>
                         </div>
-                    </article>
-                </section>
-            {{/foreach}}
+                        <a href="{{url}}" class="btn-read-more">Leer artículo completo &rarr;</a>
+                    </div>
+                </div>
+            </article>
+        </section>
+        {{/foreach}}
         {{/is}}
 
         <!-- Grilla de Artículos Recientes -->
@@ -107,17 +109,17 @@
 
             <div class="posts-grid">
                 {{#foreach posts}}
-                    {{> "post-card"}}
+                {{> "post-card"}}
                 {{/foreach}}
             </div>
 
             {{pagination}}
         </section>
-    {{else}}
+        {{else}}
         <div class="empty-state">
             <div class="empty-icon">📁</div>
             <h3>No se encontraron publicaciones aún</h3>
             <p>Pronto publicaremos nuevos artículos sobre conciliación y arbitraje. ¡Vuelve a visitarnos pronto!</p>
         </div>
-    {{/if}}
-</div>
+        {{/if}}
+    </div>
